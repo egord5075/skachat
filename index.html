@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скачать файл</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+        
+        p {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+            margin: 20px 0;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.6);
+        }
+        
+        .download-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .file-info {
+            background-color: #f8f9fa;
+            border-left: 4px solid #6a11cb;
+            padding: 15px;
+            margin: 30px 0;
+            text-align: left;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .file-info h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .file-info ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        .file-info li {
+            margin-bottom: 8px;
+            color: #7f8c8d;
+        }
+        
+        .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #6a11cb;
+        }
+        
+        .counter {
+            margin-top: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            margin-top: 40px;
+            color: white;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .download-btn {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">📥</div>
+        <h1>Скачать файл</h1>
+        <p>Нажмите на кнопку ниже, чтобы загрузить файл на ваше устройство.</p>
+        
+        <div class="file-info">
+            <h3>Информация о файле:</h3>
+            <ul>
+                <li>Название: <strong>Пример_файла.pdf</strong></li>
+                <li>Размер: <strong>2.4 MB</strong></li>
+                <li>Тип: <strong>PDF-документ</strong></li>
+                <li>Дата добавления: <strong>15.05.2023</strong></li>
+            </ul>
+        </div>
+        
+        <a href="#" class="download-btn" id="downloadButton">Скачать сейчас</a>
+        
+        <div class="counter">
+            <p>Файл был скачан <span id="downloadCount">1345</span> раз</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2023 Сайт для скачивания файлов. Все права защищены.</p>
+    </footer>
+
+    <script>
+        document.getElementById('downloadButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Имитация скачивания файла
+            const link = document.createElement('a');
+            link.href = 'AI_V_MIRE.pptx''; // Замените на реальный URL файла
+            link.download ='презентация'';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Увеличиваем счетчик скачиваний
+            const countElement = document.getElementById('downloadCount');
+            let count = parseInt(countElement.textContent);
+            countElement.textContent = count + 1;
+            
+            // Показываем сообщение об успешном скачивании
+            alert('Файл начал загружаться! Если загрузка не началась, проверьте настройки браузера.');
+        });
+    </script>
+</body>
+</html>
